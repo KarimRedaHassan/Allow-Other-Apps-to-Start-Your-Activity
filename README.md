@@ -243,8 +243,8 @@ Deep-Links-vs-Android-App-Links
 Allow-Other-Apps-to-Start-Your-Activity
 - https://github.com/KarimRedaHassan/Allow-Other-Apps-to-Start-Your-Activity
 
-Create-Deep-Links-to-Your-App-Content
-- https://github.com/KarimRedaHassan/Create-Deep-Links-to-Your-App-Content
+Create-Deep-Links-and-Android-App-Links-to-Your-App-Content
+- https://github.com/KarimRedaHassan/Create-Deep-Links-and-Android-App-Links-to-Your-App-Content
 
 # Additional Resources
 
