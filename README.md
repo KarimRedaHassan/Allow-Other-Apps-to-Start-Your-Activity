@@ -1,11 +1,12 @@
 # Allow-Other-Apps-to-Start-Your-Activity
-This Tutorial will discuss how to allow other applications to start your application and how you could benefit from this behavior. This is a part of Android App Links Series.
+This Tutorial will discuss how to allow other applications to start your application and how you could benefit from this behavior.
 
 ### This Tutorial discusses the following:
 1. Why should I allow other Apps to open my App ?
 2. What is Intent & Intent-Filter ?
 3. Understand How Android System Deals with Implicit Intents
 4. Allow Other Apps To Open A Certain Activity in Your App
+5. Available Actions, Categories, Data Types
 
 ### This is a part of Android App Links Series.
 
@@ -105,6 +106,124 @@ https://developer.android.com/training/sharing/receive
                 // Update UI to reflect multiple images being shared
             }
         }
+
+# Here is a list of available intent actions, categories, data types
+
+### Intent Actions
+android.intent.action.ALL_APPS
+android.intent.action.ANSWER
+android.intent.action.APPLICATION_PREFERENCES
+android.intent.action.APP_ERROR
+android.intent.action.ASSIST
+android.intent.action.ATTACH_DATA
+android.intent.action.BUG_REPORT
+android.intent.action.CALL
+android.intent.action.CALL_BUTTON
+android.intent.action.CALL_EMERGENCY
+android.intent.action.CALL_PRIVILEGED
+android.intent.action.CARRIER_SETUP
+android.intent.action.CHOOSER
+android.intent.action.CREATE_DOCUMENT
+android.intent.action.CREATE_LIVE_FOLDER
+android.intent.action.CREATE_SHORTCUT
+android.intent.action.DELETE
+android.intent.action.DIAL
+android.intent.action.DISMISS_ALARM
+android.intent.action.DISMISS_TIMER
+android.intent.action.EDIT
+android.intent.action.EVENT_REMINDER
+android.intent.action.FACTORY_TEST
+android.intent.action.GET_CONTENT
+android.intent.action.INSERT
+android.intent.action.INSERT_OR_EDIT
+android.intent.action.INSTALL_FAILURE
+android.intent.action.INSTALL_INSTANT_APP_PACKAGE
+android.intent.action.INSTALL_PACKAGE
+android.intent.action.INSTANT_APP_RESOLVER_SETTINGS
+android.intent.action.MAIN
+android.intent.action.MANAGE_APP_PERMISSIONS
+android.intent.action.MANAGE_NETWORK_USAGE
+android.intent.action.MANAGE_PERMISSIONS
+android.intent.action.MANAGE_PERMISSION_APPS
+android.intent.action.MEDIA_SEARCH
+android.intent.action.MUSIC_PLAYER
+android.intent.action.OPEN_DOCUMENT
+android.intent.action.OPEN_DOCUMENT_TREE
+android.intent.action.PASTE
+android.intent.action.PICK
+android.intent.action.PICK_ACTIVITY
+android.intent.action.POWER_USAGE_SUMMARY
+android.intent.action.PROCESS_TEXT
+android.intent.action.QUICK_VIEW
+android.intent.action.REVIEW_PERMISSIONS
+android.intent.action.RINGTONE_PICKER
+android.intent.action.RUN
+android.intent.action.SEARCH
+android.intent.action.SEARCH_LONG_PRESS
+android.intent.action.SEND
+android.intent.action.SENDTO
+android.intent.action.SEND_MULTIPLE
+android.intent.action.SET_ALARM
+android.intent.action.SET_TIMER
+android.intent.action.SET_WALLPAPER
+android.intent.action.SHOW_ALARMS
+android.intent.action.SHOW_APP_INFO
+android.intent.action.SHOW_SUSPENDED_APP_DETAILS
+android.intent.action.SHOW_TIMERS
+android.intent.action.SNOOZE_ALARM
+android.intent.action.SYNC
+android.intent.action.SYSTEM_TUTORIAL
+android.intent.action.UNINSTALL_PACKAGE
+android.intent.action.UPGRADE_SETUP
+android.intent.action.VIEW
+android.intent.action.VIEW_DOWNLOADS
+android.intent.action.VOICE_ASSIST
+android.intent.action.VOICE_COMMAND
+android.intent.action.WEB_SEARCH
+
+### Intent Categories
+android.intent.category.ALTERNATIVE
+android.intent.category.APP_BROWSER
+android.intent.category.APP_CALCULATOR
+android.intent.category.APP_CALENDAR
+android.intent.category.APP_CONTACTS
+android.intent.category.APP_EMAIL
+android.intent.category.APP_GALLERY
+android.intent.category.APP_MAPS
+android.intent.category.APP_MARKET
+android.intent.category.APP_MESSAGING
+android.intent.category.APP_MUSIC
+android.intent.category.BROWSABLE
+android.intent.category.CAR_DOCK
+android.intent.category.CAR_MODE
+android.intent.category.DEFAULT
+android.intent.category.DESK_DOCK
+android.intent.category.DEVELOPMENT_PREFERENCE
+android.intent.category.EMBED
+android.intent.category.HE_DESK_DOCK
+android.intent.category.HOME
+android.intent.category.INFO
+android.intent.category.LAUNCHER
+android.intent.category.LEANBACK_LAUNCHER
+android.intent.category.LE_DESK_DOCK
+android.intent.category.MONKEY
+android.intent.category.NOTIFICATION_PREFERENCES
+android.intent.category.OPENABLE
+android.intent.category.PREFERENCE
+android.intent.category.SELECTED_ALTERNATIVE
+android.intent.category.TAB
+android.intent.category.TYPED_OPENABLE
+android.intent.category.USAGE_ACCESS_CONFIG
+android.intent.category.VOICE
+android.intent.category.VR_HOME
+
+### Intent Data Types
+audio/audioType, you could use * as subtype to indicate that all audio types are acceptable
+video/videoType, you could use * as subtype to indicate that all video types are acceptable
+image/imageType, you could use * as subtype to indicate that all image types are acceptable
+text/textType, you could use * as subtype to indicate that all text types are acceptable
+application/otherTypes
+*/*, you could use */* to indicate that all media types are acceptable
 
 
 # What's Next ?
