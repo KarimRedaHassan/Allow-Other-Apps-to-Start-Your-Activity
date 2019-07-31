@@ -228,9 +228,8 @@ https://developer.android.com/training/sharing/receive
 
 # What's Next ?
 
-Create-Deep-Links-to-Your-App-Content
-
-https://github.com/KarimRedaHassan/Create-Deep-Links-to-Your-App-Content
+Create-Deep-Links-and-Android-App-Links-to-Your-App-Content
+- https://github.com/KarimRedaHassan/Create-Deep-Links-and-Android-App-Links-to-Your-App-Content
 
 # Android App Links Series
 
@@ -259,5 +258,4 @@ https://developer.android.com/training/sharing/receive
 # Also See
 
 #### A Full List Of All My Tutorials
-
 https://github.com/KarimRedaHassan?tab=repositories
