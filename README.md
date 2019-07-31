@@ -35,6 +35,7 @@ When some app makes an Implicit Intent, The Android System will scan all the Ins
 Here is one major difference between the Deep Link and Android App Link. If you are using a deep link, Android System will show the dialog mentioned in the above paragraph. If you are using Android App Link, The Android System will automatically opens your app showing this dialog.
 
 # Allow Other Apps To Open A Certain Activity in Your App
+### Step One: Add Intent Filters from Incoming Intents
 First, allow other apps find & open a certain activity in your app by doing the following steps:
 1. Declare an \<intent-filter> inside your \<activity> tag in the manifest file.
 2. Specify the kind of \<action> that your activity could handle.
@@ -51,7 +52,90 @@ Here is a code snippet for an activity allowing a Send Action
              </intent-filter>
          </activity>
 
+If your are trying to create Deep Links, Consider using the \<data> tag to declare a scheme and host. So That your app could be reached by URLs. 
 
+### Some Important Notes About \<intent-filter> :
+#### 1. Intent Filters will allow all possible combinations of your declared actions, categories, data type. 
+In Other Words, If you declared ACTION_SEND, ACTION_VIEW, CATEGORY_DEFAULT, CATEGORY_BROWSABLE, scheme = http, scheme = https. This Means Your are allowing all of the following intents:
+1. Intent declares ACTION_SEND with CATEGORY_DEFAULT and scheme = http
+2. Intent declares ACTION_SEND with CATEGORY_DEFAULT and scheme = https
+3. Intent declares ACTION_SEND with CATEGORY_BROWSABLE and scheme = http
+4. Intent declares ACTION_SEND with CATEGORY_BROWSABLE and scheme = https
+5. Intent declares ACTION_VIEW with CATEGORY_DEFAULT and scheme = http
+6. Intent declares ACTION_VIEW with CATEGORY_DEFAULT and scheme = https
+7. Intent declares ACTION_VIEW with CATEGORY_BROWSABLE and scheme = http
+8. Intent declares ACTION_VIEW with CATEGORY_BROWSABLE and scheme = https
+9. OR any intent declaring at least one ore more from the above declaration
+
+            <intent-filter>
+                <action android:name="android.intent.action.SEND" />
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:mimeType="http" />
+                <data android:scheme="https" />
+            </intent-filter>
+ 
+#### 2. If you want to restrict intents to certain combinations of action, category, data type, You have to considered using multiple \<intent-filter>
+In Other Words, If you declared two \<intent-filter> tags, The first one has ACTION_SEND, CATEGORY_DEFAULT, scheme = http and The second one has ACTION_VIEW, CATEGORY_BROWSABLE, scheme = https. This Means Your are allowing only the following intents:
+1. Intent declares ACTION_SEND with CATEGORY_DEFAULT and scheme = http
+2. Intent declares ACTION_VIEW with CATEGORY_BROWSABLE and scheme = https
+3. OR any intent declaring at least one ore more from the above declaration
+
+            <intent-filter>
+                <action android:name="android.intent.action.SEND" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="http" />
+            </intent-filter>
+            
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="https" />
+            </intent-filter>
+
+#### 3. If you intent to use ACTION_VIEW, you have to scpecify a CATEGORY_BROWSABLE and a URL by declaring a \<data> tag with at least a scheme attribute.
+
+            <intent-filter >
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="https" />
+            </intent-filter>
+       
+#### 4. Intent Filters will allow all possible combinations of your data tag attributes. 
+In Other Words, If you declared \<data> tag with scheme = http, host = www.example.com and another \<data> tag with scheme = app, host = your.app.name . This Means Your are allowing all of the following URLs:
+1. http://www.example.com
+2. app://www.example.com
+3. http://your.app.name
+4. app://your.app.name
+
+            <intent-filter>
+                ...
+                <data android:scheme="http" android:host="www.example.com" />
+                <data android:scheme="app" android:host="your.app.name" />
+            </intent-filter>
+
+#### 5. If you want to restrict intents to certain combinations of data tag attributes, You have to considered using multiple \<intent-filter>
+In Other Words, If you declared two \<intent-filter> tags, The first one has \<data> tag with scheme = http, host = www.example.com and The second one has \<data> tag with scheme = app, host = your.app.name . This Means Your are allowing only the following URLs:
+1. http://www.example.com
+2. app://your.app.name
+
+            <intent-filter>
+                ...
+                <data
+                    android:host="www.example.com"
+                    android:scheme="http" />
+            </intent-filter>
+            <intent-filter>
+                ...
+                <data
+                    android:host="your.app.name"
+                    android:scheme="app" />
+            </intent-filter>
+
+### Step Two: Read From Incoming Intent
 Second, prepare your activity to receive the data sent by other app through the intent by doing the following steps:
 1. Get a reference of the intent
 2. Get the action sent along with the intent. You could ignore this if your activity receives only one action.
@@ -63,7 +147,8 @@ Here is a code snippet for an activity allowing more than one Action, This snipp
 
 https://developer.android.com/training/sharing/receive
 
-        void onCreate (Bundle savedInstanceState) {
+         @Override
+         public void onCreate(Bundle savedInstanceState) {
             ...
             // Get intent, action and MIME type
             Intent intent = getIntent();
@@ -86,21 +171,21 @@ https://developer.android.com/training/sharing/receive
             ...
         }
 
-        void handleSendText(Intent intent) {
+        private void handleSendText(Intent intent) {
             String sharedText = intent.getStringExtra(Intent.EXTRA_TEXT);
             if (sharedText != null) {
                 // Update UI to reflect text being shared
             }
         }
 
-        void handleSendImage(Intent intent) {
+        private void handleSendImage(Intent intent) {
             Uri imageUri = (Uri) intent.getParcelableExtra(Intent.EXTRA_STREAM);
             if (imageUri != null) {
                 // Update UI to reflect image being shared
             }
         }
 
-        void handleSendMultipleImages(Intent intent) {
+        private void handleSendMultipleImages(Intent intent) {
             ArrayList<Uri> imageUris = intent.getParcelableArrayListExtra(Intent.EXTRA_STREAM);
             if (imageUris != null) {
                 // Update UI to reflect multiple images being shared
