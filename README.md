@@ -6,12 +6,29 @@ This Tutorial will discuss how to allow other applications to start your applica
 
 ### This is a part of Android App Links Series.
 
+
+
 # What's Next ?
 
+Deep-Links-vs-Android-App-Links
+
+https://github.com/KarimRedaHassan/Deep-Links-vs-Android-App-Links
+
+# Android App Links Series
+
+Understand-The-URL
+- https://github.com/KarimRedaHassan/Understand-The-URL
+
+Allow-Other-Apps-to-Start-Your-Activity
+- https://github.com/KarimRedaHassan/Allow-Other-Apps-to-Start-Your-Activity
+
+Deep-Links-vs-Android-App-Links
+- https://github.com/KarimRedaHassan/Deep-Links-vs-Android-App-Links
 
 # Additional Resources
 
 https://developer.android.com/training/basics/intents/filters.html
+
 
 # Also See
 
