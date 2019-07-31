@@ -13,7 +13,7 @@ This Tutorial will discuss how to allow other applications to start your applica
 # Why Allowing Other Apps to start my App
 The first question that should come up on your mind is Why should I allow other apps to open my App.
 
-As an answer for this question, Allowing other apps to open your app actually benefits you more that the other app. Because it simply redirects users to your app and increases user engagement with your app. It also make it easier for the user himself to use your app. For Example, if you allow "Share Action" to your app, The user could simply grap a content from other apps (such as Facebook, gallery, ... whatever) by pressing the share button and post it in your app instead of writing the content again in your app.
+As an answer for this question, Allowing other apps to open your app actually benefits you more that the other app. Because it simply redirects users to your app and increases user engagement with your app. It also make it easier for the user himself to use your app. For Example, if you allow "Share Action" to your app, The user could simply grab a content from other apps (such as Facebook, gallery, ... whatever) by pressing the share button and post it in your app instead of writing the content again in your app.
 
 # Intent & Intent-Filter
 The main concept behind allowing other apps to open your app is the Intent & Intent-Filter. If you are asking what does it mean, Here is a snippet from the Official Android Documentation about the Intent "Its most significant use is in the launching of activities, where it can be thought of as the glue between activities. It is basically a passive data structure holding an abstract description of an action to be performed"
@@ -24,9 +24,9 @@ So, The Intent is the main method to start an Activity which exactly what the ot
 
 There is Two types of intents: Explicit & Implicit. The Explicit Intent is the one you are using inside your app to navigate from one activity to another as you know the exact class name that you want to go to. The Implicit Intent is where you don't know the exact class name of your destination OR you don't mind any destination as long as it will perform the requested action, here comes the Intent-Filter.
 
-The Intent Filter is the way that the activity identifies itself to the Android System. So, If the activity, for example, is used to share a post in a social app, This Activity will indentify itself by saying "Hey, I can handle a Share Action" or in more technical terms it will declare an Action_SEND in its manifest file.
+The Intent Filter is the way that the activity identifies itself to the Android System. So, If the activity, for example, is used to share a post in a social app, This Activity will identify itself by saying "Hey, I can handle a Share Action" or in more technical terms it will declare an Action_SEND in its manifest file.
 
-So, If you want other apps to use your activities, You should declare what kind of actions that your activities could handle in your manifest file using the Intent-Filter. You could also specify the kind of data that your activity expect to recieve.
+So, If you want other apps to use your activities, You should declare what kind of actions that your activities could handle in your manifest file using the Intent-Filter. You could also specify the kind of data that your activity expect to receive.
 
 # Understand How Android System Deals with Implicit Intents
 When some app makes an Implicit Intent, The Android System will scan all the Installed Applications and search in their Manifest Files for any Activity that could handle this specific action, category, and data type that is send along with the Implicit Intent by querying the PackageManager. Once the Android System finds some matching activities, Android System shows these activities in a Dialog so the user could choose the desired activity. If there is Only One Activity that could handle this action, Android System will automatically opens it. If no activity has been found, The Android System will return null to the requested app.
@@ -52,12 +52,12 @@ Here is a code snippet for an activity allowing a Send Action
          </activity>
 
 
-Second, prepare your activity to recieve the data sent by other app through the intent by doing the following steps:
+Second, prepare your activity to receive the data sent by other app through the intent by doing the following steps:
 1. Get a reference of the intent
-2. Get the action sent along with the intent. You could ignore this if your activity recieves only one action.
+2. Get the action sent along with the intent. You could ignore this if your activity receives only one action.
 3. Get the data type sent along with the intent by calling getType() on the intent reference.
 2. Get the data sent along with the intent by calling getExtra() on the intent reference.
-3. Perform your custom business logic to show or deal with the data recieved to meet the user's expectations
+3. Perform your custom business logic to show or deal with the data received to meet the user's expectations
 
 Here is a code snippet for an activity allowing more than one Action, This snippet has been taken from Android Documentation
 
@@ -223,7 +223,7 @@ https://developer.android.com/training/sharing/receive
 - image/imageType, you could use * as subtype to indicate that all image types are acceptable
 - text/textType, you could use * as subtype to indicate that all text types are acceptable
 - application/otherTypes
-- */*, you could use */* to indicate that all media types are acceptable
+- \*/*, you could use */* to indicate that all media types are acceptable
 
 
 # What's Next ?
